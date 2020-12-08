@@ -46,6 +46,7 @@ id_inspecao   INTEGER PRIMARY KEY AUTOINCREMENT,
 id_construcao INT NOT NULL,
 data_inicio   DATETIME NOT NULL,
 data_fim      DATETIME,
+analisado     BOOLEAN DEFAULT FALSE,
 FOREIGN KEY(id_construcao) REFERENCES construcao(id_construcao)
 );
 
@@ -95,10 +96,8 @@ PRIMARY KEY(id_drone, id_inspecao)
 
 CREATE TABLE imagens_treinamento(
 id_imagens_treinamento INTEGER PRIMARY KEY AUTOINCREMENT,
-id_inspecao         INT NOT NULL,
 nome                VARCHAR(30) NOT NULL,
 endereco            VARCHAR(50) NOT NULL,
 label               VARCHAR(10),
-data_criacao        DATETIME  NOT NULL DEFAULT (DATETIME(CURRENT_TIMESTAMP,'localtime')),
-FOREIGN KEY(id_inspecao) REFERENCES inspecao(id_inspecao)
+data_criacao        DATETIME  NOT NULL DEFAULT (DATETIME(CURRENT_TIMESTAMP,'localtime'))
 );
