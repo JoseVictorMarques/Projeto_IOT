@@ -3,6 +3,7 @@ import datetime as dt
 import re
 import shutil
 import os
+from .reconhecimento import reconhecimento as rec
 
 DATABASE_PATH = 'database/local_database.db' #localmente
 #Database functions:
@@ -226,6 +227,7 @@ def avaliar_imagens(id_inspecao):
     for picture_path, label in imagens_lista:
         if label is None:
             #Avaliar imagem
+            new_label = rec.classify_image(picture_path)['status']
             print("Avaliando imagem")
             try:
                 cur = con.cursor()

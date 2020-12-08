@@ -22,7 +22,7 @@ def classify_image(image_path):
 
     return classification
 
-print(classify_image("roofs/damaged/6.png"))
+#print(classify_image("roofs/damaged/6.png"))
 
 
 
