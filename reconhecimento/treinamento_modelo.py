@@ -9,6 +9,7 @@ from cv2 import cv2
 import os
 from random import shuffle
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 # carregar imagens para o treinamento
 def load_images(folder , lbl):
@@ -56,6 +57,15 @@ opt = SGD(lr=INIT_LR)
 model.compile(loss="binary_crossentropy", optimizer=opt , metrics=["accuracy"])
 # treinar a rede neural
 H = model.fit(x=x_train, y=y_train_one_hot, validation_data=(x_test, y_test_one_hot),epochs=EPOCHS, batch_size=32)
+
+# printar grafico da acuracia
+plt.plot(H.history['accuracy'])
+plt.plot(H.history['val_accuracy'])
+plt.title('Model Accuracy')
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+plt.legend(['Train' ,'Val'], loc = 'upper left')
+plt.show()
 
 #salvar o modelo na pasta /model do projeto
 print("Saving model...")
