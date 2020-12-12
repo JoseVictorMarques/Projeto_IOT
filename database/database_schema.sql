@@ -56,6 +56,8 @@ id_inspecao         INT NOT NULL,
 nome                VARCHAR(30) NOT NULL,
 endereco            VARCHAR(50) NOT NULL,
 label               VARCHAR(10),
+latitude            NUMERIC(4,2),
+longitude           NUMERIC(4,2),
 data_criacao        DATETIME  NOT NULL DEFAULT (DATETIME(CURRENT_TIMESTAMP,'localtime')),
 FOREIGN KEY(id_inspecao) REFERENCES inspecao(id_inspecao)
 );
